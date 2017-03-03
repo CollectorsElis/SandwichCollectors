@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SandwichCollectors</string>
+    <string name="alle_liste">Accedi alle tue liste</string>
+    <string name="vai_area_scambio">Accedi all\'area di scambio</string>
 </resources>
