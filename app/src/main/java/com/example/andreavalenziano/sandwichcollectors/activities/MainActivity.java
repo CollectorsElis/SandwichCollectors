@@ -1,4 +1,4 @@
-package com.example.andreavalenziano.sandwichcollectors;
+package com.example.andreavalenziano.sandwichcollectors.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,4 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
 }
