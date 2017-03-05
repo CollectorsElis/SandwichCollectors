@@ -8,7 +8,7 @@ public class Figurina {
     private int idFigurina; //PK
 
     private int numFigurina;
-    private int nome; //chiave di ricerca
+    private String nome; //chiave di ricerca
     private int quantita;
     private Squadra squadra;
     private String sezione; //ENUM??
@@ -17,7 +17,7 @@ public class Figurina {
 
     }
 
-    public Figurina(int numFigurina, int nome, int quantita, Squadra squadra, String sezione) {
+    public Figurina(int numFigurina, String nome, int quantita, Squadra squadra, String sezione) {
         this.numFigurina = numFigurina;
         this.nome = nome;
         this.quantita = quantita;
@@ -26,7 +26,14 @@ public class Figurina {
 
     }
 
-    public int getNome() {
+    public Figurina(int numFigurina, String nome) {
+        this.numFigurina = numFigurina;
+        this.nome = nome;
+
+    }
+
+
+    public String getNome() {
         return nome;
     }
 

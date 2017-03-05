@@ -2,11 +2,15 @@ package com.example.andreavalenziano.sandwichcollectors.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
 import com.example.andreavalenziano.sandwichcollectors.adapters.FigurAdapter;
+import com.example.andreavalenziano.sandwichcollectors.models.Figurina;
+
+import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
@@ -26,6 +30,16 @@ public class FiguListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_figu_list);
+
+        figuListRV = (RecyclerView) findViewById(R.id.figu_list_rv);
+        layoutManager = new LinearLayoutManager(this);
+        figurAdapter = new FigurAdapter();
+
+        figuListRV.setLayoutManager(layoutManager);
+        figuListRV.setAdapter(figurAdapter);
+
+
+        figurAdapter.setDataSet(getElencoProva());
     }
 
     @Override
@@ -49,6 +63,26 @@ public class FiguListActivity extends AppCompatActivity {
         Log.d(TAG, "onStop");
 
     }
+
+    public ArrayList getElencoProva() {
+        ArrayList<Figurina> elencoProva = new ArrayList<>();
+        elencoProva.add(new Figurina(1, "Donnarumma"));
+        elencoProva.add(new Figurina(2, "Romagnoli"));
+        elencoProva.add(new Figurina(3, "Paletta"));
+        elencoProva.add(new Figurina(4, "De Sciglio"));
+        elencoProva.add(new Figurina(5, "Abate"));
+        elencoProva.add(new Figurina(6, "Locatelli"));
+        elencoProva.add(new Figurina(7, "Sosa"));
+        elencoProva.add(new Figurina(8, "Pasalic"));
+        elencoProva.add(new Figurina(9, "Bonaventura"));
+        elencoProva.add(new Figurina(10, "Deulofeu"));
+        elencoProva.add(new Figurina(11, "Bacca"));
+        elencoProva.add(new Figurina(12, "Suso"));
+        elencoProva.add(new Figurina(13, "lapadula"));
+        return elencoProva;
+    }
+
+
 
     @Override
     protected void onRestart() {
