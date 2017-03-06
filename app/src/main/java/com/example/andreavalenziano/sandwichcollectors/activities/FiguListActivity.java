@@ -29,7 +29,7 @@ public class FiguListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_figu_list);
+        setContentView(R.layout.activity_figu_list);
 
         figuListRV = (RecyclerView) findViewById(R.id.figu_list_rv);
         layoutManager = new LinearLayoutManager(this);
