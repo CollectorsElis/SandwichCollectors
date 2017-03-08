@@ -27,5 +27,7 @@ public class Squadra {
         return nomeSquadra;
     }
 
-
+    public void setNomeSquadra(String nomeSquadra) {
+        this.nomeSquadra = nomeSquadra;
+    }
 }

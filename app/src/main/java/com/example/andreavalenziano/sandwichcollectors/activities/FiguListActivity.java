@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
 import com.example.andreavalenziano.sandwichcollectors.adapters.FigurAdapter;
+import com.example.andreavalenziano.sandwichcollectors.databases.DatabaseHandler;
 import com.example.andreavalenziano.sandwichcollectors.models.Figurina;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class FiguListActivity extends AppCompatActivity {
     RecyclerView figuListRV;
     RecyclerView.LayoutManager layoutManager;
     FigurAdapter figurAdapter;
+    DatabaseHandler dbHandler;
 
 
 
@@ -38,8 +40,8 @@ public class FiguListActivity extends AppCompatActivity {
         figuListRV.setLayoutManager(layoutManager);
         figuListRV.setAdapter(figurAdapter);
 
-
-        figurAdapter.setDataSet(getElencoProva());
+        dbHandler = new DatabaseHandler(this);
+        figurAdapter.setDataSet(dbHandler.getAllFigurine());
     }
 
     @Override

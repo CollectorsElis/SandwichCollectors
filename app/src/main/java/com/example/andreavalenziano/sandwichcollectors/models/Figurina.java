@@ -67,4 +67,20 @@ public class Figurina {
     public void setIdFigurina(int idFigurina) {
         this.idFigurina = idFigurina;
     }
+
+    public void setNumFigurina(int numFigurina) {
+        this.numFigurina = numFigurina;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSquadra(Squadra squadra) {
+        this.squadra = squadra;
+    }
+
+    public void setSezione(String sezione) {
+        this.sezione = sezione;
+    }
 }
