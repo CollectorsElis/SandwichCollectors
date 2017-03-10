@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp"
+    android:layout_margin="10dp"
     android:background="@color/colorPrimary">
 
 
@@ -14,7 +14,8 @@
         android:text="1"
         android:padding="10dp"
         android:textSize="@dimen/main_dimen"
-        android:background="@color/cardview_light_background">
+        android:textColor="@color/colorText"
+        android:background="@color/colorPrimary">
 
     </TextView>
 
@@ -23,10 +24,10 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/colorText"
         android:text="@string/nome_e_cognome"
         android:textSize="@dimen/main_dimen"
-        android:background="@color/cardview_light_background" />
+        android:background="@color/colorPrimary" />
 
 
 </LinearLayout>

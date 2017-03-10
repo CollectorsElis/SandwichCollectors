@@ -9,15 +9,26 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+
+        <include
         layout="@layout/default_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
     </include>
 
-    <include layout="@layout/content_figu_list" />
+        <include layout="@layout/content_figu_list"
 
+
+            />
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

@@ -16,10 +16,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
+import com.example.andreavalenziano.sandwichcollectors.utilities.Utility;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     Button toListBtn, toChangeAreaBtn;
+    Utility utility;
 
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        utility = new Utility();
 
         // set ascoltatore sui bottoni
         toListBtn=(Button)findViewById(R.id.to_list_btn);
@@ -46,12 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 */
+        utility.createNavDrawer((DrawerLayout) findViewById(R.id.drawer_layout), toolbar, this);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
