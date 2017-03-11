@@ -1,12 +1,16 @@
 package com.example.andreavalenziano.sandwichcollectors.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.RelativeLayout;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
 import com.example.andreavalenziano.sandwichcollectors.adapters.FigurAdapter;
@@ -30,6 +34,11 @@ public class FiguListActivity extends AppCompatActivity {
     DatabaseHandler dbHandler;
     Utility utility;
 
+    //snackbar
+    public Snackbar snackbar;
+
+    //layout
+    public RelativeLayout relativeLayout;
 
 
     @Override
@@ -47,6 +56,8 @@ public class FiguListActivity extends AppCompatActivity {
 
         utility = new Utility();
 
+        relativeLayout = (RelativeLayout) findViewById(R.id.rel_content_figu_list);
+
         figuListRV.setLayoutManager(layoutManager);
         figuListRV.setAdapter(figurAdapter);
 
@@ -55,6 +66,28 @@ public class FiguListActivity extends AppCompatActivity {
 
         utility.createNavDrawer((DrawerLayout) findViewById(R.id.drawer_layout), toolbar, this);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "ON ACTIVITY RESULT");
+        if (requestCode == MainActivity.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            int qty = data.getIntExtra(MainActivity.QTY, 0);
+            int index = data.getIntExtra(MainActivity.INDEX, 0);
+
+            Figurina fig = figurAdapter.getFigurina(index);
+            fig.setQuantita(qty);
+            if (dbHandler.updateQty(fig) > 0) {
+
+                snackbar = Snackbar.make(relativeLayout, R.string.updating_success, Snackbar.LENGTH_SHORT);
+                figurAdapter.updateQty(fig, index);
+            } else {
+                snackbar = Snackbar.make(relativeLayout, R.string.database_error, Snackbar.LENGTH_SHORT);
+            }
+            snackbar.show();
+
+        }
+    }
+
 
     @Override
     protected void onResume() {
@@ -95,7 +128,6 @@ public class FiguListActivity extends AppCompatActivity {
         elencoProva.add(new Figurina(13, "lapadula"));
         return elencoProva;
     }
-
 
 
     @Override

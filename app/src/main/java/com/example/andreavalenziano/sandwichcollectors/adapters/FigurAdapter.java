@@ -1,5 +1,7 @@
 package com.example.andreavalenziano.sandwichcollectors.adapters;
 
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
+import com.example.andreavalenziano.sandwichcollectors.activities.InfoFiguActivity;
+import com.example.andreavalenziano.sandwichcollectors.activities.MainActivity;
 import com.example.andreavalenziano.sandwichcollectors.models.Figurina;
+import com.example.andreavalenziano.sandwichcollectors.models.Squadra;
 
 import java.util.ArrayList;
 
@@ -51,14 +56,43 @@ public class FigurAdapter extends RecyclerView.Adapter<FigurAdapter.FigurVH> {
         notifyDataSetChanged();
     }
 
+    public Figurina getFigurina(int position) {
+        return dataSet.get(position);
+    }
+
+    public void updateQty(Figurina fig, int index) {
+        dataSet.set(index, fig);
+        notifyDataSetChanged();
+    }
+
     class FigurVH extends RecyclerView.ViewHolder {
         TextView numberTV, nameTV;
 
-        FigurVH(View itemView) {
+        FigurVH(final View itemView) {
             super(itemView);
             numberTV = (TextView) itemView.findViewById(R.id.number_tv);
             nameTV = (TextView) itemView.findViewById(R.id.name_tv);
-            Log.d(TAG, "NAME TV: " + nameTV.getText());
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+
+                    int pos = getAdapterPosition();
+                    AppCompatActivity context = (AppCompatActivity) itemView.getContext();
+                    Intent intent = new Intent(context, InfoFiguActivity.class);
+                    Figurina fig = dataSet.get(pos);
+
+                    intent.putExtra(MainActivity.NUM_FIG, fig.getNumFigurina());
+                    intent.putExtra(MainActivity.NOME_FIG, fig.getNome());
+                    Squadra squadra = fig.getSquadra();
+                    intent.putExtra(MainActivity.SQUADRA, squadra.getNomeSquadra());
+                    intent.putExtra(MainActivity.INDEX, pos);
+                    intent.putExtra(MainActivity.QTY, fig.getQuantita());
+                    Log.d(TAG, "QUANTITA': " + fig.getQuantita());
+                    context.startActivityForResult(intent, MainActivity.REQUEST_CODE);
+                    return true;
+                }
+            });
         }
     }
 }

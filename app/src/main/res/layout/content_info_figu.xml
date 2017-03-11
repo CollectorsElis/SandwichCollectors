@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/colorPrimaryLight"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_figurina"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_account_box" />
+
+    <TextView
+        android:id="@+id/num_fig_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toEndOf="@id/img_figurina"
+        android:text="@string/num_fig"
+        android:textSize="@dimen/card_text"
+
+        />
+
+    <TextView
+        android:id="@+id/empty_num_fig_tv_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toEndOf="@id/num_fig_tv"
+        android:text="@string/num_fig"
+        android:textSize="@dimen/card_text"
+
+        />
+
+
+    <TextView
+        android:id="@+id/nome_figurina_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/img_figurina"
+        android:layout_below="@id/num_fig_tv"
+        android:text="@string/nome_figurina"
+        android:textSize="@dimen/card_text" />
+
+    <TextView
+        android:id="@+id/squadra_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nome_figurina_tv"
+        android:layout_toEndOf="@id/img_figurina"
+        android:text="@string/squadra"
+        android:textSize="@dimen/card_text"
+
+
+        />
+
+    <TextView
+        android:id="@+id/qty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/squadra_tv"
+        android:layout_toEndOf="@id/img_figurina"
+
+        android:text="@string/possedute"
+        android:textSize="@dimen/card_text"
+
+        />
+
+    <EditText
+        android:id="@+id/empty_qty_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/squadra_tv"
+        android:layout_toEndOf="@id/qty_tv"
+        android:text="0"
+
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/empty_qty_et"
+        android:layout_alignParentEnd="true"
+        android:text="@string/salva"
+        android:id="@+id/salva_btn" />
+
+
+</RelativeLayout>

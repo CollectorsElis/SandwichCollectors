@@ -12,6 +12,7 @@ package="com.example.andreavalenziano.sandwichcollectors">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+    <activity android:name=".activities.InfoFiguActivity" />
 </application>
 
 </manifest>

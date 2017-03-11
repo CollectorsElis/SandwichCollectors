@@ -18,4 +18,12 @@
 
     <string name="action_example">Example action</string>
     <string name="nome_e_cognome">Nome e cognome</string>
+    <string name="nome_figurina">Nome Figurina</string>
+    <string name="squadra">Squadra</string>
+    <string name="num_fig">N°</string>
+    <string name="quantita">Quantità</string>
+    <string name="possedute">Ne hai:</string>
+    <string name="salva">Salva</string>
+    <string name="updating_success">La quantità posseduta è stata aggiornata</string>
+    <string name="database_error">Errore di inserimento</string>
 </resources>

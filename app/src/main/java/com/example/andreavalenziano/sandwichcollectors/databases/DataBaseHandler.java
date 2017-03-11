@@ -132,8 +132,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 fig.setQuantita(cursor.getInt(3));
                 fig.setSezione(cursor.getString(4));
                 squadra.setIdSquadra(cursor.getInt(6));
-                //squadra.setNomeSquadra(cursor.getString(7));
-                //fig.setSquadra(squadra);
+                squadra.setNomeSquadra(cursor.getString(7));
+                fig.setSquadra(squadra);
 
                 figArrayListList.add(fig);
             } while (cursor.moveToNext());
@@ -144,6 +144,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return notes list
         return figArrayListList;
     }
+
+    //UPDATE QTY
+
+    public int updateQty(Figurina fig) {
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_QTY, fig.getQuantita());
+        int up = db.update(TABLE_FIGURINE, values, KEY_ID_FIG + " = ?",
+                new String[]{String.valueOf(fig.getIdFigurina())});
+
+        db.close();
+        return up;
+
+    }
+
+
 
 
 }

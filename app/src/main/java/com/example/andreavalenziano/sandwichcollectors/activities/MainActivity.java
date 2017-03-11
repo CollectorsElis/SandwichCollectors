@@ -20,6 +20,16 @@ import com.example.andreavalenziano.sandwichcollectors.utilities.Utility;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+
+    //constants
+    public static final String NUM_FIG = "numero";
+    public static final String QTY = "qty";
+    public static final String SQUADRA = "squadra";
+    public static final String NOME_FIG = "nome_fig";
+    public static final int REQUEST_CODE = 1;
+    public static final String INDEX = "index";
+
+
     Button toListBtn, toChangeAreaBtn;
     Utility utility;
 
