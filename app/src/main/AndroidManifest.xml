@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.InfoFiguActivity" />
+        <activity android:name=".activities.ListaMancantiActivity" />
+        <activity android:name=".activities.ListaCeloActivity" />
     </application>
 
 </manifest>

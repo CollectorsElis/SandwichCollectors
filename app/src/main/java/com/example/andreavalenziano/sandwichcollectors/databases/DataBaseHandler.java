@@ -145,6 +145,72 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return figArrayListList;
     }
 
+    public ArrayList<Figurina> getFigurineMancanti() {
+        ArrayList<Figurina> figArrayListList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM figurina, team WHERE figurina.id_team=team.id_team AND quantity=0";
+        //  String selectQuery = "SELECT * FROM figurina";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Figurina fig = new Figurina();
+                Squadra squadra = new Squadra();
+                fig.setIdFigurina(Integer.parseInt(cursor.getString(0)));
+                fig.setNumFigurina(cursor.getInt(1));
+                fig.setNome(cursor.getString(2));
+                fig.setQuantita(cursor.getInt(3));
+                fig.setSezione(cursor.getString(4));
+                squadra.setIdSquadra(cursor.getInt(6));
+                squadra.setNomeSquadra(cursor.getString(7));
+                fig.setSquadra(squadra);
+
+                figArrayListList.add(fig);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+
+        // return notes list
+        return figArrayListList;
+    }
+
+    public ArrayList<Figurina> getFigurinePossedute() {
+        ArrayList<Figurina> figArrayListList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM figurina, team WHERE figurina.id_team=team.id_team AND quantity>0";
+        //  String selectQuery = "SELECT * FROM figurina";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Figurina fig = new Figurina();
+                Squadra squadra = new Squadra();
+                fig.setIdFigurina(Integer.parseInt(cursor.getString(0)));
+                fig.setNumFigurina(cursor.getInt(1));
+                fig.setNome(cursor.getString(2));
+                fig.setQuantita(cursor.getInt(3));
+                fig.setSezione(cursor.getString(4));
+                squadra.setIdSquadra(cursor.getInt(6));
+                squadra.setNomeSquadra(cursor.getString(7));
+                fig.setSquadra(squadra);
+
+                figArrayListList.add(fig);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+
+
+        // return notes list
+        return figArrayListList;
+    }
+
     //UPDATE QTY
 
     public int updateQty(Figurina fig) {

@@ -8,8 +8,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
 import com.example.andreavalenziano.sandwichcollectors.R;
@@ -48,7 +52,9 @@ public class FiguListActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
+
 
         figuListRV = (RecyclerView) findViewById(R.id.figu_list_rv);
         layoutManager = new LinearLayoutManager(this);
@@ -65,6 +71,39 @@ public class FiguListActivity extends AppCompatActivity {
         figurAdapter.setDataSet(dbHandler.getAllFigurine());
 
         utility.createNavDrawer((DrawerLayout) findViewById(R.id.drawer_layout), toolbar, this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_list_activities, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_manc_fig) {
+
+            startActivity(new Intent(this, ListaMancantiActivity.class));
+            finish();
+
+        }
+        if (id == R.id.action_celo_fig) {
+            startActivity(new Intent(this, ListaCeloActivity.class));
+            finish();
+
+
+        }
+        if (id == R.id.action_tot_fig) {
+            startActivity(new Intent(this, FiguListActivity.class));
+            finish();
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

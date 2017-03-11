@@ -7,10 +7,12 @@
     android:id="@+id/rel_content_figu_list">
 
 
+
     <android.support.v7.widget.RecyclerView
         android:padding="10dp"
         android:layout_width="match_parent"
         android:id="@+id/figu_list_rv"
         android:layout_height="match_parent" />
+
 
 </RelativeLayout>

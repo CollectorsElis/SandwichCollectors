@@ -26,4 +26,7 @@
     <string name="salva">Salva</string>
     <string name="updating_success">La quantità posseduta è stata aggiornata</string>
     <string name="database_error">Errore di inserimento</string>
+    <string name="totale">TOTALE</string>
+    <string name="mancanti">MANCA</string>
+    <string name="celo">CELO</string>
 </resources>
